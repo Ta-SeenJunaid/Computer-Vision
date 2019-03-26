@@ -16,7 +16,7 @@ ret , prev_frame = cap.read()
 prev_gray = cv2.cvtColor(prev_frame,cv2.COLOR_BGR2GRAY)
 
 
-prevPts = cv2.goodFeaturesToTrack(prev_gray,mask=none,**corner_track_params)
+prevPts = cv2.goodFeaturesToTrack(prev_gray,mask=None,**corner_track_params)
 
 mask = np.zeros_like(prev_frame)
 
@@ -41,18 +41,17 @@ while True:
         
         frame = cv2.circle(frame,(x_new,y_new),8,(0,0,255),-1) 
         
-        img = cv2.add(frame,mask)
-        cv2.imshow('tracking',img)
+    img = cv2.add(frame,mask)
+    cv2.imshow('tracking',img)
         
-        k=cv2.waitKey(30) & 0xFF
-        if k == 27:
-            break
-        
-        prev_gray = frame_gray.copy()
-        prevPts = good_new.reshape(-1,1,2)
+    k=cv2.waitKey(30) & 0xFF
+    if k == 27:
+        break
+   
+    prev_gray = frame_gray.copy()
+    prevPts = good_new.reshape(-1,1,2)
         
 cv2.destroyAllWindows()
-
 cap.release()
 
         
