@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('DATA/bricks.jpg').astype(np.float32)/255
+img = cv2.imread('../DATA/bricks.jpg').astype(np.float32)/255
 img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
 
 gamma = 2
@@ -30,10 +30,10 @@ plt.imshow(median_blur)
 
 biblur = cv2.bilateralFilter(wt,9,75,75)
 plt.imshow(biblur)
-imgd = cv2.imread('DATA/sammy.jpg')
+imgd = cv2.imread('../DATA/sammy.jpg')
 imgd = cv2.cvtColor(imgd,cv2.COLOR_BGR2RGB)
 
-noise_img = cv2.imread('DATA/sammy_noise.jpg')
+noise_img = cv2.imread('../DATA/sammy_noise.jpg')
 noise_img = cv2.cvtColor(noise_img,cv2.COLOR_BGR2RGB)
 plt.imshow(noise_img)
 

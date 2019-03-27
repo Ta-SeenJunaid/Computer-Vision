@@ -2,7 +2,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-road = cv2.imread('DATA/road_image.jpg')
+road = cv2.imread('../DATA/road_image.jpg')
 road_copy = np.copy(road)
 #plt.imshow(road)
 #road.shape[:2]

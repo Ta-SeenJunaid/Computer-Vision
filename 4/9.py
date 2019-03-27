@@ -3,7 +3,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('DATA/sudoku.jpg',0)
+img = cv2.imread('../DATA/sudoku.jpg',0)
 plt.imshow(img,cmap='gray')
 
 sobelx = cv2.Sobel(img,cv2.CV_64F,1,0,ksize=5)

@@ -9,7 +9,7 @@ def display(img,cmap='gray'):
     ax = fig.add_subplot(111)
     ax.imshow(img,cmap='gray')
     
-sep_coins = cv2.imread('DATA/pennies.jpg')
+sep_coins = cv2.imread('../DATA/pennies.jpg')
 display(sep_coins)
 
 sep_blur = cv2.medianBlur(sep_coins,25)

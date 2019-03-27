@@ -3,15 +3,15 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-dark_horse = cv2.imread('DATA/horse.jpg')
+dark_horse = cv2.imread('../DATA/horse.jpg')
 show_horse = cv2.cvtColor(dark_horse, cv2.COLOR_BGR2RGB)
 #plt.imshow(show_horse)
 
-rainbow = cv2.imread('DATA/rainbow.jpg')
+rainbow = cv2.imread('../DATA/rainbow.jpg')
 show_rainbow = cv2.cvtColor( rainbow, cv2.COLOR_BGR2RGB)
 #plt.imshow(show_rainbow)
 
-blue_bricks = cv2.imread('DATA/bricks.jpg')
+blue_bricks = cv2.imread('../DATA/bricks.jpg')
 show_bricks = cv2.cvtColor(blue_bricks, cv2.COLOR_BGR2RGB)
 #plt.imshow(show_bricks)
 

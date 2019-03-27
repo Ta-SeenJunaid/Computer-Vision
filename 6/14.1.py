@@ -3,11 +3,11 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-nadia = cv2.imread('DATA/Nadia_Murad.jpg',0)
-denis = cv2.imread('DATA/Denis_Mukwege.jpg',0)
-solvay = cv2.imread('DATA/solvay_conference.jpg',0)
+nadia = cv2.imread('../DATA/Nadia_Murad.jpg',0)
+denis = cv2.imread('../DATA/Denis_Mukwege.jpg',0)
+solvay = cv2.imread('../DATA/solvay_conference.jpg',0)
 
-face_cascade = cv2.CascadeClassifier('DATA/haarcascades/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('../DATA/haarcascades/haarcascade_frontalface_alt.xml')
 
 def detect_face(img):
     
@@ -44,7 +44,7 @@ def adj_detect_face(img):
 result = adj_detect_face(solvay)
 plt.imshow(result,cmap='gray') 
     
-eye_cascade = cv2.CascadeClassifier('DATA/haarcascades/haarcascade_eye.xml')
+eye_cascade = cv2.CascadeClassifier('../DATA/haarcascades/haarcascade_eye.xml')
 
 def detect_eyes(img):
     

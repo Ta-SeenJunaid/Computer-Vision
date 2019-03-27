@@ -8,10 +8,10 @@ def display(img,cmap='gray'):
     ax = fig.add_subplot(111)
     ax.imshow(img,cmap='gray')
 
-reeses = cv2.imread('DATA/reeses_puffs.png',0)
+reeses = cv2.imread('../DATA/reeses_puffs.png',0)
 display(reeses)
 
-cereals = cv2.imread('DATA/many_cereals.jpg',0)
+cereals = cv2.imread('../DATA/many_cereals.jpg',0)
 display(cereals)
 
 orb = cv2.ORB_create()

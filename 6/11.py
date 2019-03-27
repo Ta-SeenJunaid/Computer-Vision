@@ -11,7 +11,7 @@ def display(img,cmap='gray'):
     ax = fig.add_subplot(111)
     ax.imshow(img,cmap='gray')
     
-img = cv2.imread('DATA/pennies.jpg')
+img = cv2.imread('../DATA/pennies.jpg')
 sep_coins = img
 #display(img)
 

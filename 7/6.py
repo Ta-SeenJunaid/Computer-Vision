@@ -6,10 +6,10 @@ cap = cv2.VideoCapture(0)
 
 ret,frame = cap.read()
 
-face_cascade = cv2.CascadeClassifier('DATA/haarcascades/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('../DATA/haarcascades/haarcascade_frontalface_alt.xml')
 face_rects = face_cascade.detectMultiScale(frame)
 
-(face_x,face_y,w,h) = tuple(face_rects[0])
+(face_x,face_y,w,h) = tuple(face_rects[1])
 track_window = (face_x,face_y,w,h)
 
 roi = frame[face_y:face_y+h,face_x:face_x+w]
@@ -32,7 +32,29 @@ while True:
         
         dst = cv2.calcBackProject([hsv],[0],roi_hist,[0,180],1)
         
-        ret, tracking_window = 
+        ret, tracking_window = cv2.meanShift(dst,track_window,term_crit) 
+        
+        x,y,w,h = track_window
+        img2 = cv2.rectangle(frame,(x,y),(x+w,y+h),(0,0,255),5)
+        
+        cv2.imshow('img',img2)
+        
+        k = cv2.waitKey(1) & 0xFF
+        if k == 27:
+            break
+        
+    else:
+        break
+    
+
+cv2.destroyAllWindows()
+cap.release()
+        
+        
+        
+        
+        
+        
 
 
 

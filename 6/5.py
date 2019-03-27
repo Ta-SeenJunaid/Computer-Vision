@@ -4,7 +4,7 @@ import cv2
 import numpy as np
 import matplotlib.pyplot as plt
 
-img = cv2.imread('DATA/sammy_face.jpg')
+img = cv2.imread('../DATA/sammy_face.jpg')
 plt.imshow(img)
 
 edges = cv2.Canny(image=img,threshold1=127,threshold2=127)
