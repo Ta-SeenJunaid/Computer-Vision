@@ -6,10 +6,10 @@ cap = cv2.VideoCapture(0)
 
 ret,frame = cap.read()
 
-face_cascade = cv2.CascadeClassifier('../DATA/haarcascades/haarcascade_frontalface_alt.xml')
+face_cascade = cv2.CascadeClassifier('../DATA/haar-cascade-files-down/haarcascade_frontalface_default.xml')
 face_rects = face_cascade.detectMultiScale(frame)
 
-(face_x,face_y,w,h) = tuple(face_rects[1])
+(face_x,face_y,w,h) = tuple(face_rects[0])
 track_window = (face_x,face_y,w,h)
 
 roi = frame[face_y:face_y+h,face_x:face_x+w]
