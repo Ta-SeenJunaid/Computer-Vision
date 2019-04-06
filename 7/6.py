@@ -6,7 +6,8 @@ cap = cv2.VideoCapture(0)
 
 ret,frame = cap.read()
 
-face_cascade = cv2.CascadeClassifier('../DATA/haar-cascade-files-down/haarcascade_frontalface_default.xml')
+#face_cascade = cv2.CascadeClassifier('../DATA/haar-cascade-files-down/haarcascade_frontalface_default.xml')
+face_cascade = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
 face_rects = face_cascade.detectMultiScale(frame)
 
 (face_x,face_y,w,h) = tuple(face_rects[0])
