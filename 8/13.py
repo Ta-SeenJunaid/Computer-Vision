@@ -47,7 +47,9 @@ model.fit(x_train,y_cat_train,epochs=2)
 model.evaluate(x_test,y_cat_test)
 
 from sklearn.metrics import classification_report
+
 predictions = model.predict_classes(x_test)
+print(classification_report(y_test,predictions))
 
 
 
