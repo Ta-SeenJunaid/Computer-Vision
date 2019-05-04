@@ -77,7 +77,35 @@ plt.plot(results.history['acc'])
 #for multiple classification binary>categorical, sigmoid>softmax
 
 
+#Making new predictions
+
+import numpy as np
+from keras.preprocessing import image
+test_image = image.load_img('../DATA/CATS_DOGS/single_prediction/cat_or_dog_1.jpg', target_size = (150, 150))
+test_image = image.img_to_array(test_image)
+test_image = np.expand_dims(test_image, axis = 0)
+result = model.predict(test_image)
+train_image_gen.class_indices
+if result[0][0] == 1:
+    prediction = 'dog'
+else:
+    prediction = 'cat'
 
 
+#Making new predictions with saved model
+from keras.models import load_model
+import numpy as np
+from keras.preprocessing import image
+
+test_image = image.load_img('../DATA/CATS_DOGS/single_prediction/cat_or_dog_2.jpg', target_size = (150, 150))
+test_image = image.img_to_array(test_image)
+test_image = np.expand_dims(test_image, axis = 0)
+
+newmodel = load_model('CATS_DOGS.h5')
+result = newmodel.predict_classes(test_image)
 
 
+if result[0][0] == 1:
+    prediction = 'dog'
+else:
+    prediction = 'cat'
