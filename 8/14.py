@@ -17,6 +17,35 @@ from keras.layers import Dense,Conv2D,MaxPool2D,Flatten
 model = Sequential()
 
 model.add(Conv2D(filters=32,kernel_size=(4,4),input_shape=(32,32,3),activation='relu'))
+model.add(MaxPool2D(pool_size=(2,2)))
+
+model.add(Flatten())
+
+model.add(Dense(256,activation='relu'))
+
+model.add(Dense(10,activation='softmax'))
+
+model.compile(loss='categorical_crossentropy',
+              optimizer='rmsprop',
+              metrics=['accuracy'])
+
+model.summary()
+
+model.fit(x_train,y_cat_train,verbose=1,epochs=10)
+
+model.metrics_names
+model.evaluate(x_test,y_cat_test)
+
+from sklearn.metrics import classification_report
+predictions = model.predict_classes(x_test)
+print(classification_report(y_test,predictions))
+
+
+
+
+
+
+
 
 
 
