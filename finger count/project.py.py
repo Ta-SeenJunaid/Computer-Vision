@@ -21,7 +21,7 @@ def calc_accum_avg(frame,accumalated_weight):
         background = frame.copy().astype('float')
         return None
     
-    cv2.accumulateWeighted(frame,background,accumulated_weight)
+    cv2.accumulateWeighted(frame,background,accumalated_weight)
     
 
 def segment(frame,threshold_min=25):
@@ -41,39 +41,39 @@ def segment(frame,threshold_min=25):
         return (thresholded,hand_segment)
     
     
- def count_fingers(thresholded,hand_segment):
+def count_fingers(thresholded,hand_segment):
      
      conv_hull = cv2.convexHull(hand_segment)
      
-     top = tuple(conv_hull[conv_hull[;,;,1].argmin()[0]])
-     bottom = tuple(conv_hull[conv_hull[;,;,1].argmax()[0]])
-     left = tuple(conv_hull[conv_hull[;,;,1].argmin()[0]])
-     right = tuple(conv_hull[conv_hull[;,;,1].argmax()[0]])
+     top = tuple(conv_hull[conv_hull[:,:,1].argmin()[0]])
+     bottom = tuple(conv_hull[conv_hull[:,:,1].argmax()[0]])
+     left = tuple(conv_hull[conv_hull[:,:,1].argmin()[0]])
+     right = tuple(conv_hull[conv_hull[:,:,1].argmax()[0]])
      
      
      cX = (left[0] + right[0]) // 2
      cY = (top[1] + bottom[1]) // 2
     
-    distance = pairwise.euclidean_distances([cX,cY],Y=[left,right,top,bottom])[0]
+     distance = pairwise.euclidean_distances([cX,cY],Y=[left,right,top,bottom])[0]
     
-    max_distance = distance.max()
+     max_distance = distance.max()
     
-    radius = int(0.9*max_distance)
-    circumfrence = (2*np.pi*radius)
-    
-    
-    circular_roi = np.zeros(thresholded[:2],dtype='uint8')
-    
-    cv2.circle(circular_roi,(cX,cY),radius,255,10)
-    
-    circular_roi = cv2.bitwise_and(thresholded, thresholded, mask=circular_roi)
-    
-    image,contours,hierarchy = cv2.findContours(circular_roi.copy(),cv2.RETR_EXTERNAL,CHAAIN_APPROX_NONE)
+     radius = int(0.9*max_distance)
+     circumfrence = (2*np.pi*radius)
     
     
-    count = 0
+     circular_roi = np.zeros(thresholded[:2],dtype='uint8')
     
-    for cnt in contours:
+     cv2.circle(circular_roi,(cX,cY),radius,255,10)
+    
+     circular_roi = cv2.bitwise_and(thresholded, thresholded, mask=circular_roi)
+    
+     image,contours,hierarchy = cv2.findContours(circular_roi.copy(),cv2.RETR_EXTERNAL,CHAAIN_APPROX_NONE)
+    
+    
+     count = 0
+    
+     for cnt in contours:
         
         (x,y,w,h) = cv2.boundingRect(cnt)
         
@@ -84,7 +84,7 @@ def segment(frame,threshold_min=25):
         if out_of_wrist and limit_points:
             count +=1
             
-    return count
+     return count 
     
 
 cam = cv2.VideoCapture(0)
@@ -104,7 +104,7 @@ while True:
     gray = cv2.GaussianBlur(gray,(7,7),0)
     
     if num_frames < 60:
-        calc_accum_avg(gray,accumulated_weight)
+        calc_accum_avg(gray,accumalated_weight)
         
         if num_frames <= 59:
             cv2.putText(frame_copy, 'WAIT. GETTING BACKGROUND',(200,300),cv2.FONT_HERSHEY_SCRIPT_SIMPLEX,1,(0,0,255),2)
@@ -124,7 +124,7 @@ while True:
             
             cv2.putText(frame_copy,str(fingers),(70,50),cv2.FONT_HERSHEY_SIMPLEX,1,(0,0,255),2)
             
-            cv2.imshow('Thresholded',thresholded):
+            cv2.imshow('Thresholded',thresholded)
                 
     cv2.rectangle(frame_copy,(roi_left,roi_top),(roi_right,roi_bottom),(0,0,255),5)
     
