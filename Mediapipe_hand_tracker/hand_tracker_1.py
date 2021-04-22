@@ -3,6 +3,8 @@ import mediapipe as mp
 import time
 
 cap = cv2.VideoCapture(0)
+cv2.namedWindow("Image", cv2.WINDOW_NORMAL)
+cv2.resizeWindow("Image", 1500, 1000)
 
 mp_hands = mp.solutions.hands
 hands = mp_hands.Hands()
@@ -38,7 +40,5 @@ while True:
     cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3,
                 (255, 0, 255), 3)
 
-    cv2.namedWindow("Image", cv2.WINDOW_NORMAL)
-    cv2.resizeWindow("Image", 1000, 1000)
     cv2.imshow("Image", img)
     cv2.waitKey(1)
