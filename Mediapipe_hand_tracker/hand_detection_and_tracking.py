@@ -36,7 +36,7 @@ class HandDetectionAndTracking():
             my_hand = self.results.multi_hand_landmarks[hand_no]
 
             for id, lm in enumerate(my_hand.landmark):
-                print(id, lm)
+                # print(id, lm)
                 h, w, c = img.shape
                 cx, cy = int(lm.x*w), int(lm.y*h)
                 lm_list.append([id, cx, cy])
