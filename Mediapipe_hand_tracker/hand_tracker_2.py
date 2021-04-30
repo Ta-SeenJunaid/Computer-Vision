@@ -13,7 +13,7 @@ detector = hdt.HandDetectionAndTracking()
 while True:
     success, img = cap.read()
     img = cv2.flip(img, 1)
-    img = detector.find_hands(img, draw=False)
+    img = detector.find_hands(img, draw=True)
     lm_list = detector.find_position(img, draw=False)
     if len(lm_list) != 0:
         print(lm_list[4], lm_list[8])

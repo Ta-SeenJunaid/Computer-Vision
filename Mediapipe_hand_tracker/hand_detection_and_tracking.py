@@ -41,7 +41,7 @@ class HandDetectionAndTracking():
                 cx, cy = int(lm.x*w), int(lm.y*h)
                 lm_list.append([id, cx, cy])
                 if draw:
-                    cv2.circle(img, (cx, cy), 10, (255, 153, 255), cv2.FILLED)
+                    cv2.circle(img, (cx, cy), 5, (255, 153, 255), cv2.FILLED)
                 # if id == 8:
                 #     cv2.circle(img, (cx, cy), 10, (255, 128, 0), cv2.FILLED)
 
@@ -71,8 +71,7 @@ def main():
         cv2.putText(img, str(int(fps)), (10, 70), cv2.FONT_HERSHEY_PLAIN, 3,
                     (255, 0, 255), 3)
 
-        # cv2.namedWindow("Image", cv2.WINDOW_NORMAL)
-        # cv2.resizeWindow("Image", 1000, 1000)
+
         cv2.imshow("Image", img)
         cv2.waitKey(1)
 
