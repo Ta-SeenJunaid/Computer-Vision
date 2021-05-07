@@ -22,5 +22,29 @@ def find_encodings(images):
         encode_list.append(encode)
     return encode_list
 
+
 encode_list_known = find_encodings(images)
 print('Encoding Complete')
+
+cap = cv2.VideoCapture(0)
+
+while True:
+    success, img = cap.read()
+    img_small = cv2.resize(img, (0,0), None, 0.25, 0.25)
+    img_small = cv2.cvtColor(img_small, cv2.COLOR_BGR2RGB)
+
+    faces_current_frame = face_recognition.face_locations(img_small)
+    encodes_current_frame = face_recognition.face_encodings(img_small, faces_current_frame)
+
+    for encode_face, face_loc in zip(encodes_current_frame, faces_current_frame):
+        matches = face_recognition.compare_faces(encode_list_known, encode_face)
+        face_dis = face_recognition.face_distance(encode_list_known, encode_face)
+        print(face_dis)
+        match_index = np.argmin(face_dis)
+
+        if matches[match_index]:
+            name = class_names[match_index].upper()
+            print(name)
+
+    cv2.imshow('webcam',img)
+    cv2.waitKey(1)
